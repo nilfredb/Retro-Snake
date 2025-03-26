@@ -15,7 +15,7 @@ Color darkGreen = {43, 51, 24, 255};
 
 
 // Cell size and count
-int cellSize = 20;
+int cellSize = 20; //here you can change the size of the window proportionally.
 int cellCount = 25;
 int offset = 75;
 const int screenWidth  = cellSize * cellCount + 2 * offset;
@@ -252,12 +252,12 @@ int main () {
     }
     else if (currentScreen == GAMEPLAY)
     {
-        // Actualizar juego si ha pasado el tiempo
+        // Update game
         if (eventTriggered(0.1)) {
             game.Update();
         }
 
-        // Dirección de la serpiente
+        // Snake movement, you can change the keys here.
         if(IsKeyPressed(KEY_UP) && game.snake.direction.y == 0) {
             game.snake.direction = {0, -1};
             game.running = true;
@@ -275,12 +275,14 @@ int main () {
             game.running = true;
         }
 
-        // Dibujar elementos del juego
+        // Draw game elements
         DrawRectangleLinesEx(Rectangle{(float)offset-5, (float)offset-5, (float)cellSize * cellCount+10, (float)cellSize * cellCount+10}, 5, darkGreen);
         DrawText("Retro Snake", offset -5, 20, 40, darkGreen);
         DrawText(TextFormat("Score: %i", game.score), offset + cellSize * cellCount - 100, 20, 20, darkGreen);
         game.Draw();
     }
+
+    //This is the logic for the game over screen
     if (!game.running){
         const char* message = "Game Over";
         DrawText(message, screenWidth / 2 - MeasureText(message, 40) / 2, screenHeight / 2, 40, darkGreen);
