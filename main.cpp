@@ -281,7 +281,15 @@ int main () {
         DrawText(TextFormat("Score: %i", game.score), offset + cellSize * cellCount - 100, 20, 20, darkGreen);
         game.Draw();
     }
-
+    if (!game.running){
+        const char* message = "Game Over";
+        DrawText(message, screenWidth / 2 - MeasureText(message, 40) / 2, screenHeight / 2, 40, darkGreen);
+        DrawText("Press Enter to restart", screenWidth / 2 - MeasureText("Press Enter to restart", 20) / 2, screenHeight / 2 + 50, 20, darkGreen);
+        if (IsKeyPressed(KEY_ENTER)) {
+            game.running = true;
+            
+        }
+    }
     EndDrawing();
     }
 
