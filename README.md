@@ -17,6 +17,7 @@ Retro Snake is a small console-based game developed in C++ using the Raylib libr
 - Arrow keys ↑ ↓ ← → to move
 - ENTER to start the game from the menu
 - ENTER to restart after losing
+- ESC to exit
 
 🧠 Programming:
 ---------------
